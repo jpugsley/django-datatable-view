@@ -196,8 +196,8 @@ class DatatableMixin(MultipleObjectMixin):
         searches = []
 
         # This count is for the benefit of the frontend datatables.js
-        #total_initial_record_count = queryset.count()
-        total_initial_record_count = 999999
+        total_initial_record_count = queryset.count()
+        # total_initial_record_count = 999999
 
         if options['ordering']:
             db_fields, sort_fields = split_real_fields(self.model, options['ordering'])
@@ -246,8 +246,8 @@ class DatatableMixin(MultipleObjectMixin):
         if not sort_fields and not searches:
             # We can shortcut and speed up the process if all operations are database-backed.
             object_list = queryset
-            #object_list._dtv_unpaged_total = queryset.count()
-            object_list._dtv_unpaged_total = total_initial_record_count
+            object_list._dtv_unpaged_total = queryset.count()
+            # object_list._dtv_unpaged_total = total_initial_record_count
         else:
             object_list = ObjectListResult(queryset)
 
